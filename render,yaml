@@ -1,0 +1,6 @@
+ services:
+  - type: web
+    name: remote-desktop-ct
+    env: node
+    plan: free
+    startCommand: npm install && node server.js
