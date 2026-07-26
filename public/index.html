@@ -1,0 +1,85 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Remote Access Gateway</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0a0a0a;
+            color: #0f0;
+            font-family: monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            border: 1px solid #0f0;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 0 20px rgba(0,255,0,.2);
+            text-align: center;
+            width: min(340px, 90vw);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        h2 {
+            font-size: 15px;
+            letter-spacing: 3px;
+            color: #0f0;
+            border-bottom: 1px solid #1a1a1a;
+            padding-bottom: 14px;
+        }
+        p { font-size: 11px; color: #0a0; letter-spacing: 1px; }
+        input {
+            background: #000;
+            border: 1px solid #0f0;
+            color: #0f0;
+            padding: 12px;
+            width: 100%;
+            outline: none;
+            font: 13px monospace;
+            letter-spacing: 2px;
+            transition: box-shadow .15s;
+        }
+        input:focus { box-shadow: 0 0 8px rgba(0,255,0,.3); }
+        input::placeholder { color: #1a3a1a; letter-spacing: 1px; }
+        button {
+            background: #0f0;
+            color: #000;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            font: bold 12px monospace;
+            letter-spacing: 2px;
+            width: 100%;
+            transition: background .15s;
+        }
+        button:hover { background: #fff; }
+        .hint { font-size: 9px; color: #1a3a1a; letter-spacing: 0; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>// SECURE REMOTE GATEWAY</h2>
+        <p>ENTER ACCESS KEY</p>
+        <input type="text" id="accessKey" placeholder="Access key..." autocomplete="off" autocorrect="off" spellcheck="false">
+        <button onclick="connect()">ESTABLISH LINK</button>
+        <span class="hint">You will choose TCP or UDP on the next screen.</span>
+    </div>
+    <script>
+        const input = document.getElementById('accessKey');
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') connect();
+        });
+        function connect() {
+            const key = input.value.trim();
+            if (key) window.location.href = '/desktop/' + encodeURIComponent(key);
+        }
+        input.focus();  // make it usable the moment the page loads
+    </script>
+</body>
+</html>

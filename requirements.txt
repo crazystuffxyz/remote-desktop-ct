@@ -1,0 +1,34 @@
+# remote desktop host — python deps
+# install: pip install -r requirements.txt
+
+# GPU screen capture (Windows DXGI, zero CPU copy)
+dxcam
+
+# JPEG encoder — simplejpeg bundles the libjpeg-turbo DLL so no extra install
+simplejpeg
+PyTurboJPEG
+
+# fallback JPEG encoder + image ops
+opencv-python
+
+# async websocket client
+websockets>=12.0
+
+# audio capture (WASAPI loopback for system audio)
+sounddevice
+
+# input simulation
+pyautogui
+
+# numpy
+numpy
+
+# fallback screen capture (cross-platform)
+mss
+
+# WebRTC data channel for the UDP path
+aiortc
+
+# PC speaker mute for the "audio swallow" feature (optional)
+pycaw
+comtypes
